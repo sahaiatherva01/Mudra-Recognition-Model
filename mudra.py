@@ -4,7 +4,7 @@ import time
 import math
 import numpy as np
 
-# --- Data for Mudras
+# Data for Mudras
 mudra_descriptions = {
     "Mukula": {"desc": "Meaning 'bud.' Represents a water lily or lotus bud, the act of eating, or worship. Formed by bringing all five fingertips together."},
     "Kataka Mukha": {"desc": "Meaning 'opening of a bracelet.' Used to show plucking flowers, holding a necklace, or drawing a bowstring. Formed by joining the index, middle finger, and thumb."},
@@ -46,7 +46,7 @@ def wrap_text(image, text, pos, font, font_scale, color, thickness, max_width):
             line = test_line
     cv2.putText(image, line, (x, y), font, font_scale, color, thickness)
 
-# --- Core Logic ---
+# Core Logic 
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
     print("Error: Could not open camera.")
@@ -88,7 +88,7 @@ def get_mudra_info(lmList, hand_handedness):
     
     fingers = fingers_up(lmList, hand_handedness)
 
-    # --- Detection Logic with Confidence Score ---
+    # Detection Logic with Confidence Score 
     
     if (dist_thumb_index < 35 and dist_thumb_middle < 35 and dist_thumb_ring < 35 and dist_thumb_pinky < 35):
         scores = [1 - (d / 35) for d in [dist_thumb_index, dist_thumb_middle, dist_thumb_ring, dist_thumb_pinky]]
@@ -187,7 +187,6 @@ try:
                     else:
                         display_confidence = 0.0
 
-        # --- UI Drawing ---
         cv2.putText(img, mudra_name, (30, 60), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 3)
 
         if display_confidence > 0:
