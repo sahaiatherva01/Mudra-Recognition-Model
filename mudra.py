@@ -5,37 +5,6 @@ import math
 import numpy as np
 from typing import Dict, Tuple, List, Any
 
-# Data for Mudras
-mudra_descriptions = {
-    "Mukula": {"desc": "Meaning 'bud.' Represents a water lily or lotus bud, the act of eating, or worship. Formed by bringing all five fingertips together."},
-    "Kataka Mukha": {"desc": "Meaning 'opening of a bracelet.' Used to show plucking flowers, holding a necklace, or drawing a bowstring. Formed by joining the index, middle finger, and thumb."},
-    "Alapadma": {"desc": "Meaning 'full-blown lotus.' Represents a bloomed lotus, fruits like an apple, beauty, or asking a question. Formed by fanning out all fingers."},
-    "Simhamukha": {"desc": "Meaning 'lion's face.' Represents a lion, courage, strength, or a pearl. Formed by touching the middle and ring fingers to the thumb."},
-    "Sandamsa": {"desc": "Meaning 'pincers.' Represents grasping with precision, plucking, or drawing something out. Formed by bringing the thumb and index finger together."},
-    "Chandrakala": {"desc": "Meaning 'crescent moon.' Represents the moon on Lord Shiva's head or one's face. Formed by extending the thumb and index finger into an 'L' shape."},
-    "Chatura": {"desc": "Meaning 'clever' or 'square.' Represents musk, a small quantity, or cleverness. Formed with all fingers extended except the pinky, and thumb at the base of the middle finger."},
-    "Shukatunda": {"desc": "Meaning 'parrot's beak.' A specific gesture used to represent a hook, a parrot's beak, or shooting an arrow."},
-    "Kartarimukha": {"desc": "Meaning 'scissor's face.' Represents scissors, separation, the corner of an eye, or two different things. Formed by extending the index and middle fingers."},
-    "Mrigashirsha": {"desc": "Meaning 'deer's head.' Represents a deer, costumes, or the cheeks of a person. Formed by extending the thumb and pinky finger upwards."},
-    "Ardhachandra": {"desc": "Meaning 'half-moon.' Represents the sky, a large platter, or one's waist. Formed like Pataka but with the thumb extended outwards."},
-    "Pataka": {"desc": "The foundational 'flag' gesture. Signifies blessings, stopping, a forest, or the start of a dance. Formed by keeping all fingers straight and together."},
-    "Hamsasya": {"desc": "Meaning 'swan's beak.' Represents softness, tying a knot, giving instruction, or picking up a delicate object. Formed by joining the tips of the thumb and index finger."},
-    "Tripataka": {"desc": "Meaning 'three parts of a flag.' A variation of Pataka used for crowns, trees, or drawing lines. Formed like Pataka, but with the ring finger bent."},
-    "Mayura": {"desc": "Meaning 'peacock.' Represents a peacock's beak or neck, or the act of writing. Formed by joining the tips of the thumb and ring finger."},
-    "Suchi": {"desc": "Meaning 'needle face.' Represents a needle, the number one, pointing, or demonstration. Formed by extending the index finger upwards from a fist."},
-    "Shikara": {"desc": "Meaning 'peak' or 'spire.' A 'thumbs-up' gesture used to hold a bow or express determination. Formed by raising the thumb from a fist."},
-    "Trishula": {"desc": "Meaning 'trident.' Represents the weapon of Lord Shiva or the number three. Formed by raising the index, middle, and ring fingers."},
-    "Ardhapataka": {"desc": "Meaning 'half-flag.' Represents a knife, a dagger, a tower, or the number two. Formed by extending the index and middle fingers together."},
-    "Arala": {"desc": "Meaning 'bent.' Represents drinking poison or nectar, or a violent wind. Formed by bending the index finger from the Pataka pose."},
-    "Bhramara": {"desc": "Meaning 'bee.' Represents a bee, yoga, a wing, or plucking flowers. Formed by joining the thumb and middle finger, with the index finger curled inwards."},
-    "Padmakosha": {"desc": "Meaning 'lotus bud.' Represents a fruit, a ball-like object, or a flower bud. Formed by cupping the hand with all fingers bent and slightly apart."},
-    "Mushti": {"desc": "The standard 'fist.' Represents steadiness, grasping an object, combat, or a character's strength. Formed by closing all fingers with the thumb placed over them."},
-    "Sarpashirsha": {"desc": "Meaning 'serpent's head.' Represents a cobra hood. Formed by fingers held tightly together and slightly cupped."},
-    "Hamsapaksha": {"desc": "Meaning 'swan's wing.' Represents a bridge or veil. Formed by 4 fingers straight and together with the thumb tucked into the palm."},
-    "Kapittha": {"desc": "representing Lakshmi, Sarasvati, grasping the cymbals, milking the cows, collyrium, holding the flowers during amorous sport, the edge of upper garment, gathering cloth, waving lights or offering incense and fanning."},
-    "Kangula":{"desc": "To represent Lakuca (citrus) fruit, bell-girdle of children, bell, Cakora bird, betel-nut tree, the bosoms of young maiden, white lily flower, coconut and Caataka bird."}
-
-}
 def wrap_text(image, text, pos, font, font_scale, color, thickness, max_width):
     """Wraps text to fit within a specified width."""
     x, y = pos
